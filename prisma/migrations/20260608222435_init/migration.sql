@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE "Application" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "fullName" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "phone" TEXT NOT NULL,
@@ -20,6 +20,8 @@ CREATE TABLE "Application" (
     "paymentStatus" TEXT NOT NULL DEFAULT 'pending',
     "status" TEXT NOT NULL DEFAULT 'pending',
     "notes" TEXT,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Application_pkey" PRIMARY KEY ("id")
 );
