@@ -31,6 +31,11 @@ export default function DeclinedPage() {
         onClick={() => {
           if (typeof (window as any).smartsupp === "function") {
             (window as any).smartsupp("chat:open");
+          } else {
+            window.open(
+              "https://widget-page.smartsupp.com/widget/7d3e10ae18d17d18ad8a97687f70e1d2272eab95",
+              "_blank"
+            );
           }
         }}
         className="border border-[#333] text-[#e8e8e8] text-xs tracking-[0.2em] uppercase px-8 py-4 hover:bg-white hover:text-black transition-all duration-300 mt-8 inline-block cursor-pointer"
