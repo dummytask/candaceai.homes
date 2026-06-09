@@ -14,7 +14,8 @@ export default function SmartSuppWidget() {
       color: "#111111",
     };
 
-    const o = ((window as any).smartsupp = function (...args: unknown[]) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const o: any = ((window as any).smartsupp = function (...args: unknown[]) {
       o._.push(args);
     });
     o._ = [];
