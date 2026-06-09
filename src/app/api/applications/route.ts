@@ -3,8 +3,6 @@ import { Resend } from "resend";
 import { prisma } from "@/lib/prisma";
 import { applicationReceivedHtml } from "@/lib/emails/application-received";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const REQUIRED_STRING_FIELDS = [
   "fullName",
   "email",
@@ -87,6 +85,7 @@ export async function POST(req: NextRequest) {
 
   // Send confirmation email — non-blocking, failure doesn't affect the response
   const firstName = data.fullName.trim().split(" ")[0];
+  const resend = new Resend(process.env.RESEND_API_KEY);
   resend.emails.send({
     from: "Candace AI <support@candaceai.homes>",
     to: data.email.trim(),
