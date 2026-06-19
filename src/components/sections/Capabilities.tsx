@@ -1,97 +1,98 @@
-"use client";
-
-import { motion, type Variants } from "framer-motion";
-
 const capabilities = [
   {
     number: "01",
     name: "Spatial Mapping",
     description: "LiDAR-class room understanding",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
+        <path d="M3 12h4l3-9 4 18 3-9h4" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
   },
   {
     number: "02",
     name: "Adaptive Learning",
     description: "Path refinement, error prevention",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
+        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" strokeLinecap="round" />
+      </svg>
+    ),
   },
   {
     number: "03",
     name: "Silent Operation",
     description: "48 dB acoustic performance",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
+        <path d="M11 5L6 9H2v6h4l5 4V5z" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M15.54 8.46a5 5 0 010 7.07" strokeLinecap="round" />
+      </svg>
+    ),
   },
   {
     number: "04",
     name: "Sealed Architecture",
     description: "Enclosed sensor and storage modules",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
+        <rect x="3" y="11" width="18" height="11" rx="2" />
+        <path d="M7 11V7a5 5 0 0110 0v4" strokeLinecap="round" />
+      </svg>
+    ),
   },
   {
     number: "05",
     name: "Edge Processing",
     description: "On-device inference. No external data transmission",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
+        <rect x="4" y="4" width="16" height="16" rx="2" />
+        <path d="M9 9h6v6H9z" />
+      </svg>
+    ),
   },
   {
     number: "06",
     name: "Self-Diagnostic",
     description: "Wear detection before failure",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
+        <path d="M22 12h-4l-3 9L9 3l-3 9H2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
   },
 ];
 
-const containerVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-};
-
 export default function Capabilities() {
   return (
-    <section className="py-24 px-6 md:px-16 max-w-6xl mx-auto">
-      {/* Section label */}
-      <p className="text-[10px] tracking-widest text-[#555] uppercase mb-2">
-        II · SYSTEMS
+    <section id="capabilities" className="py-24 px-6 md:px-16 max-w-6xl mx-auto">
+      <p className="section-label mb-2">II · Systems</p>
+
+      <h2 className="section-heading mt-2 mb-4">
+        Six core <span className="text-accent-soft">systems</span>.
+      </h2>
+      <p className="text-muted text-sm max-w-lg mb-16 leading-relaxed">
+        Every subsystem engineered for precision, privacy, and silent operation in your home.
       </p>
 
-      {/* Headline */}
-      <h2 className="text-3xl font-light text-white mt-2 mb-16">
-        Six core systems.
-      </h2>
-
-      {/* Cards grid */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-80px" }}
-        className="grid grid-cols-2 md:grid-cols-3 gap-4"
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {capabilities.map((cap) => (
-          <motion.div
+          <div
             key={cap.number}
-            variants={cardVariants}
-            className="bg-[#0d0d0d] p-6 flex flex-col gap-3"
+            className="card-surface p-6 flex flex-col gap-4 hover:border-accent/30 transition-colors duration-300 group"
           >
-            <span className="text-[10px] text-[#333] font-mono">
-              {cap.number}
-            </span>
-            <p className="text-sm font-light text-white leading-snug">
-              {cap.name}
-            </p>
-            <p className="text-xs text-[#555] mt-2 leading-relaxed">
-              {cap.description}
-            </p>
-          </motion.div>
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-full bg-accent/15 border border-accent/30 flex items-center justify-center text-accent-soft group-hover:bg-accent/25 transition-colors duration-300">
+                {cap.icon}
+              </div>
+              <span className="text-[10px] text-muted/60 font-mono">{cap.number}</span>
+            </div>
+            <p className="text-sm font-medium text-foreground leading-snug">{cap.name}</p>
+            <p className="text-xs text-muted leading-relaxed">{cap.description}</p>
+          </div>
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 }

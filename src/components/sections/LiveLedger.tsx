@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 
 function randomHex(length: number): string {
   const chars = "0123456789abcdef";
@@ -75,58 +74,53 @@ export default function LiveLedger() {
 
   return (
     <section className="py-32 px-6 md:px-16 max-w-6xl mx-auto">
-      <p className="text-[10px] tracking-[0.3em] text-[#444] uppercase mb-12">
-        VI · PROVENANCE
-      </p>
+      <p className="section-label mb-12">VI · Provenance</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-        {/* Left column */}
         <div>
-          <h2 className="text-4xl md:text-6xl font-light text-white leading-tight">
+          <h2 className="text-4xl md:text-5xl font-semibold text-foreground leading-tight">
             Every movement,
           </h2>
-          <h2 className="text-4xl md:text-6xl font-light text-[#444] leading-tight mb-8">
+          <h2 className="text-4xl md:text-5xl font-semibold text-accent-soft leading-tight mb-8">
             recorded on-chain.
           </h2>
-          <p className="text-sm text-[#555] max-w-xs leading-relaxed">
+          <p className="text-sm text-muted max-w-sm leading-relaxed">
             A decentralised, immutable record of device provenance, training
             epochs, and ownership. Verifiable by anyone. Revocable by no one.
           </p>
         </div>
 
-        {/* Right column */}
         <div className="flex flex-col gap-6">
-          {/* Block counter */}
-          <div className="flex flex-col gap-1">
-            <p className="text-[10px] tracking-widest text-[#444] uppercase">
-              BLOCK · LIVE
-            </p>
-            <p className="text-3xl font-mono text-white tabular-nums">
+          <div className="card-surface p-5 flex flex-col gap-2">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+              <p className="text-[10px] tracking-widest text-accent uppercase font-medium">
+                Block · Live
+              </p>
+            </div>
+            <p className="text-3xl font-mono text-foreground tabular-nums">
               {blockCount.toLocaleString("en-US")}
             </p>
           </div>
 
-          {/* Live ledger feed */}
-          <div className="h-48 overflow-hidden border border-[#111] bg-[#040404] p-3">
-            <div className="flex flex-col gap-1.5">
+          <div className="h-48 overflow-hidden rounded-xl border border-border bg-background-card p-4">
+            <div className="flex flex-col gap-2">
               {entries.map((entry) => (
-                <motion.div
+                <div
                   key={entry.id}
-                  initial={entry.id === newEntryId ? { opacity: 0, y: -6 } : { opacity: 1, y: 0 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4 }}
-                  className="flex items-center gap-3 font-mono text-[10px] text-[#444]"
+                  className={`flex items-center gap-3 font-mono text-[10px]${
+                    entry.id === newEntryId ? " ledger-entry-new" : ""
+                  }`}
                 >
-                  <span className="text-[#333] shrink-0">{entry.hash}</span>
-                  <span className="text-[#666] shrink-0">{entry.event}</span>
-                  <span className="text-[#2a2a2a] ml-auto shrink-0">{entry.timestamp}</span>
-                </motion.div>
+                  <span className="text-accent/70 shrink-0">{entry.hash}</span>
+                  <span className="text-muted shrink-0">{entry.event}</span>
+                  <span className="text-muted/50 ml-auto shrink-0">{entry.timestamp}</span>
+                </div>
               ))}
             </div>
           </div>
 
-          {/* Accepted crypto */}
-          <p className="text-[10px] tracking-widest text-[#333] uppercase">
+          <p className="text-[10px] tracking-widest text-muted/60 uppercase">
             BTC · ETH · USDC · USDT · SOL
           </p>
         </div>

@@ -34,7 +34,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full`}
     >
-      <body className="min-h-full bg-[#080808] text-[#e8e8e8] antialiased">
+      <body className="min-h-full bg-background text-foreground antialiased">
         {children}
         <SmartSuppWidget />
       </body>
