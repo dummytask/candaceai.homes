@@ -11,7 +11,7 @@ import FooterSection from "@/components/sections/FooterSection";
 
 export default function Home() {
   return (
-    <main className="bg-[#080808] min-h-screen">
+    <main className="bg-background min-h-screen">
       <NavBar />
       <Hero />
       <Capabilities />

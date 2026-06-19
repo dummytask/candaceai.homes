@@ -1,103 +1,71 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import ZoomImage from "@/components/ZoomImage";
 
 export default function Hero() {
-  const [videoError, setVideoError] = useState(false);
-
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#080808]"
-      style={{ backgroundImage: "url('/assets/images/hero-bg.png')", backgroundSize: "cover", backgroundPosition: "center" }}
-    >
-      {/* Background video — hidden gracefully if asset missing */}
-      {!videoError && (
-        <video
-          src="/assets/video/hero.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          onError={() => setVideoError(true)}
-          className="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none"
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
+      <div className="absolute inset-0 overflow-hidden opacity-40">
+        <ZoomImage
+          src="/assets/images/hero-bg.png"
+          alt=""
+          className="absolute inset-0 w-full h-full"
+          imageClassName="opacity-80"
+          duration={18}
+          loading="eager"
         />
-      )}
-
-      {/* Vignette overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 pointer-events-none" />
-
-      {/* Centered content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6">
-        {/* Small label */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-          className="text-[10px] tracking-[0.3em] text-[#888] uppercase mb-6"
-        >
-          A PRIVATE TECHNOLOGY
-        </motion.p>
-
-        {/* Main headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: "easeOut", delay: 0.3 }}
-          className="text-5xl md:text-7xl font-light tracking-tight text-white max-w-4xl leading-[1.1]"
-          style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-        >
-          Intelligence, trained in your home
-        </motion.h1>
-
-        {/* Sub-headline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: "easeOut", delay: 0.5 }}
-          className="text-[#888] text-base md:text-lg tracking-wide text-center mt-4 max-w-xl"
-        >
-          Seven days. One system. Yours to keep.
-        </motion.p>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: "easeOut", delay: 0.7 }}
-          className="mt-10"
-        >
-          <Link
-            href="/access"
-            className="
-              inline-block
-              border border-[#333] text-[#e8e8e8] text-xs tracking-[0.2em] uppercase
-              px-8 py-4
-              hover:bg-white hover:text-black
-              transition-all duration-300
-            "
-          >
-            REQUEST ACCESS
-          </Link>
-        </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.2 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="text-[#444] text-[9px] tracking-[0.4em] uppercase">
-          SCROLL
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-background/90 to-background pointer-events-none" />
+      <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-16 pt-32 pb-20 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+        <div className="text-left">
+          <p className="section-label mb-6">A Private Technology</p>
+
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-foreground max-w-xl leading-[1.1]">
+            Intelligence,{" "}
+            <span className="text-accent-soft">trained</span> in your home
+          </h1>
+
+          <p className="text-muted text-base md:text-lg mt-5 max-w-md leading-relaxed">
+            Seven days. One system. Yours to keep.
+          </p>
+
+          <div className="mt-10 flex flex-wrap gap-4">
+            <Link href="/access" className="btn-primary">
+              Request Access
+            </Link>
+            <a href="#capabilities" className="btn-outline">
+              Explore Systems
+            </a>
+          </div>
+        </div>
+
+        <div className="relative flex items-center justify-center">
+          <div className="glow-blue w-full max-w-md aspect-square relative">
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-background-card to-background-elevated border border-border overflow-hidden">
+              <ZoomImage
+                src="/assets/images/product-rest.png"
+                alt="Candace AI device"
+                className="absolute inset-0 w-full h-full"
+                imageClassName="opacity-90"
+                direction="out"
+                duration={16}
+                loading="eager"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent pointer-events-none" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+        <span className="text-muted/60 text-[9px] tracking-[0.4em] uppercase">
+          Scroll
         </span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-          className="w-px h-8 bg-gradient-to-b from-[#444] to-transparent"
-        />
-      </motion.div>
+        <div className="w-px h-8 bg-gradient-to-b from-accent/60 to-transparent animate-scroll-bounce" />
+      </div>
     </section>
   );
 }

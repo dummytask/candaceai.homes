@@ -1,51 +1,39 @@
-"use client";
-
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 
 export default function FooterSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
-    <footer className="bg-[#030303] border-t border-[#0f0f0f]">
-      {/* CTA block */}
-      <div ref={ref} className="py-32 px-6 md:px-16 flex flex-col items-center text-center">
-        <p className="text-[#444] text-[10px] tracking-widest uppercase">
+    <footer className="bg-background border-t border-border">
+      <div className="py-32 px-6 md:px-16 flex flex-col items-center text-center relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-accent/8 rounded-full blur-[100px] pointer-events-none" />
+
+        <p className="text-muted text-[10px] tracking-widest uppercase relative z-10">
           Not tested. Not evaluated.
         </p>
 
-        <motion.h2
-          className="text-4xl md:text-5xl font-light text-white mt-3 mb-10"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          Start your evaluation.
-        </motion.h2>
+        <h2 className="text-4xl md:text-5xl font-semibold text-foreground mt-3 mb-4 relative z-10">
+          Start your <span className="text-accent-soft">evaluation</span>.
+        </h2>
 
-        <Link
-          href="/access"
-          className="border border-[#333] text-[#e8e8e8] text-xs tracking-[0.2em] uppercase px-8 py-4 hover:bg-white hover:text-black transition-all duration-300"
-        >
-          REQUEST ACCESS
+        <p className="text-muted text-sm mb-10 max-w-md relative z-10">
+          Join the 2026 cohort. Seven days to prove the system works in your home.
+        </p>
+
+        <Link href="/access" className="btn-primary relative z-10">
+          Request Access
         </Link>
       </div>
 
-      {/* Divider */}
-      <div className="border-t border-[#0f0f0f] mx-6 md:mx-16 my-0" />
+      <div className="border-t border-border mx-6 md:mx-16" />
 
-      {/* Bottom bar */}
       <div className="px-6 md:px-16 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="text-[10px] tracking-widest text-[#333] uppercase">
-          CANDACE AI
+        <p className="text-[10px] tracking-widest text-muted uppercase font-medium">
+          Candace AI
         </p>
-        <p className="text-[10px] text-[#2a2a2a] max-w-xs text-center leading-relaxed">
+        <p className="text-[10px] text-muted/60 max-w-xs text-center leading-relaxed">
           Data is used to improve system performance. Only the storage module is
           returned.
         </p>
-        <p className="text-[10px] text-[#333]">© 2026</p>
+        <p className="text-[10px] text-muted/60">© 2026</p>
       </div>
     </footer>
   );

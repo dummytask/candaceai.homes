@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
+import { CANDACE_TERMS } from "@/lib/terms";
 
 interface FormState {
   fullName: string;
@@ -568,15 +569,22 @@ export default function AccessForm() {
 
               {step === 14 && (
                 <div>
-                  <p className="text-[#e8e8e8] text-xl font-light mb-8">
+                  <p className="text-[#e8e8e8] text-xl font-light mb-6">
                     Please review and agree to our terms.
                   </p>
+
+                  <div className="terms-scroll rounded-lg border border-[#1a1a1a] bg-[#0d0d0d]/60 px-4 py-3 mb-6">
+                    <p className="text-[11px] leading-relaxed text-[#888] whitespace-pre-line">
+                      {CANDACE_TERMS}
+                    </p>
+                  </div>
+
                   <button
                     type="button"
                     onClick={() =>
                       updateField("agreedToTerms", !form.agreedToTerms)
                     }
-                    className={`border px-6 py-5 text-[10px] tracking-widest uppercase cursor-pointer transition-all w-full text-left ${
+                    className={`border rounded-lg px-6 py-5 text-[10px] tracking-widest uppercase cursor-pointer transition-all w-full text-left ${
                       form.agreedToTerms
                         ? "border-[#555] text-[#e8e8e8]"
                         : "border-[#1a1a1a] text-[#555] hover:border-[#333] hover:text-[#888]"
