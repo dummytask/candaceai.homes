@@ -112,7 +112,7 @@ export default async function AdminDashboard({
                   Email
                 </th>
                 <th className="text-left text-[10px] tracking-widest text-[#333] uppercase pb-3 pr-6 font-normal">
-                  Property
+                  Kitchen Type
                 </th>
                 <th className="text-left text-[10px] tracking-widest text-[#333] uppercase pb-3 pr-6 font-normal">
                   Status
@@ -143,7 +143,7 @@ export default async function AdminDashboard({
                   </td>
                   <td className="py-4 pr-6">
                     <Link href={`/admin/${app.id}`} className="text-sm text-[#888] hover:text-[#aaa] transition-colors">
-                      {app.propertyType}
+                      {app.streetAddress}
                     </Link>
                   </td>
                   <td className="py-4 pr-6">

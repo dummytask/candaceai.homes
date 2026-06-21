@@ -89,20 +89,19 @@ export default async function ApplicationDetail({
         <div className="space-y-6">
           <Field label="Full Name" value={application.fullName} />
           <Field label="Email" value={application.email} />
-          <Field label="Phone" value={application.phone} />
-          <Field label="Address" value={application.streetAddress} />
+          <Field label="Country" value={application.phone} />
+          <Field label="Kitchen Type" value={application.streetAddress} />
+          <Field label="Dishwasher Status" value={application.city} />
           <Field
-            label="City / State / ZIP"
-            value={`${application.city}, ${application.state} ${application.zip}`}
+            label="Dishwasher Usage Frequency"
+            value={application.state}
           />
-          <Field label="Property Type" value={application.propertyType} />
-          <Field label="Property Size" value={application.propertySize} />
-          <Field label="Rooms" value={application.roomCount} />
-          <Field label="Smart Home Setup" value={application.smartHomeSetup} />
-          <Field label="Product Interest" value={application.productInterest} />
-          <Field label="Usage Intent" value={application.usageIntent} />
-          <Field label="Discovery Source" value={application.discoverySource} />
-          <Field label="Income Range" value={application.incomeRange} />
+          <Field
+            label="New Dishwasher Priority"
+            value={application.zip}
+          />
+          <Field label="Beta Source" value={application.propertyType} />
+          <Field label="Beta Interest" value={application.propertySize} />
           <Field
             label="Agreed to Terms"
             value={application.agreedToTerms ? "Yes" : "No"}
