@@ -7,7 +7,7 @@ import Link from "next/link";
 const SHIPMENT_FEE = 29.99;
 const PROCESSING_MS = 3000;
 
-type PaymentMethod = "card" | "ach" | "more";
+type PaymentMethod = "card";
 type PaymentPhase = "form" | "processing";
 
 function formatCardNumber(value: string): string {
@@ -73,7 +73,7 @@ function PaymentMethodTab({
       type="button"
       onClick={onClick}
       disabled={disabled}
-      className={`flex-1 flex items-center justify-center gap-2 rounded-lg border px-3 py-3 text-xs transition-colors ${
+      className={`flex-1 flex items-center justify-center gap-2 rounded-lg border-[0.75px] px-3 py-3 text-xs transition-colors ${
         active
           ? "border-accent text-foreground bg-accent/5"
           : "border-border text-muted hover:border-muted/40 hover:text-foreground/80"
@@ -187,25 +187,6 @@ export default function PaymentPage() {
                   </svg>
                 }
               />
-              <PaymentMethodTab
-                active={method === "ach"}
-                disabled
-                onClick={() => setMethod("ach")}
-                label="ACH bank debit"
-                icon={
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
-                    <path d="M3 21h18M4 21V8l8-5 8 5v13M9 21v-6h6v6" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                }
-              />
-              <button
-                type="button"
-                disabled
-                className="rounded-lg border border-border px-3 py-3 text-muted opacity-40 cursor-not-allowed"
-                aria-label="More payment options"
-              >
-                ···
-              </button>
             </div>
 
             {method === "card" && (
@@ -317,3 +298,4 @@ export default function PaymentPage() {
     </div>
   );
 }
+
