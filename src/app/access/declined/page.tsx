@@ -33,7 +33,7 @@ export default function DeclinedPage() {
             (window as any).smartsupp("chat:open");
           } else {
             window.open(
-              "https://widget-page.smartsupp.com/widget/7d3e10ae18d17d18ad8a97687f70e1d2272eab95",
+              "https://widget-page.smartsupp.com/widget/8792d0dba0d1bc8eb69d5343a7911db273c723c9",
               "_blank"
             );
           }

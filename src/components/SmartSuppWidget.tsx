@@ -17,7 +17,7 @@ export default function SmartSuppWidget() {
       if (cancelled || typeof (window as any).smartsupp === "function") return;
 
       (window as any)._smartsupp = {
-        key: "7d3e10ae18d17d18ad8a97687f70e1d2272eab95",
+        key: "8792d0dba0d1bc8eb69d5343a7911db273c723c9",
         color: "#111111",
       };
 
